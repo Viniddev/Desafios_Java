@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\Diasv\OneDrive\Área de Trabalho\Trabalho\Estudos Java\Desafios\Auto-instrucional\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+911556424.index
+3616084957.index

@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+C:\Users\Diasv\OneDrive\Área de Trabalho\Trabalho\Estudos Java\Desafios\calculadora\.metadata\.plugins\org.eclipse.jdt.core

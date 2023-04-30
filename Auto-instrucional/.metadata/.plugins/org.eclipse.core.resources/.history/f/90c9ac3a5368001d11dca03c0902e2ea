@@ -1,0 +1,161 @@
+package listagem;
+import java.util.Scanner;
+
+public class Listagem {
+
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		
+		int escolha;
+		String nome, telefone, email;
+		
+		int linha = 0, coluna = 0;
+		
+		String pessoas[][] = new String[100][3];
+		
+		do {
+			System.out.println("*****************************************************************");
+			System.out.println("");
+			System.out.println("		    Lista telefônica do Vinição");
+			System.out.println("");
+			System.out.println("[1] Cadastrar novas pessoas");
+			System.out.println("[2] Listar pessoas");
+			System.out.println("[3] Buscar contato pelo nome");
+			System.out.println("[4] Sair");
+			System.out.println("----------------------------------------------------------------");
+			System.out.print("Opção desejada: ");
+			escolha = sc.nextInt();
+			
+			switch (escolha){
+			case 1:
+				System.out.println("----------------------------------------------------------------");
+				System.out.println("Modo Cadastrar");
+				System.out.println("");
+				
+				System.out.print("	Digite o nome da pessoa: ");
+				
+				nome = sc.next();
+				nome = nome.toUpperCase().trim();
+				
+				if(nome.substring(0).matches("[A-Z]*")){
+					pessoas[linha][coluna] = nome;
+					coluna++;
+				}else{
+					while(nome.substring(0).matches("[A-Z]*") == false) {
+						System.out.println("");
+						System.out.printf("	Digite um nome válido: ");
+						nome = sc.next().toUpperCase().trim();
+						if(nome.substring(0).matches("[A-Z]*")){
+							pessoas[linha][coluna] = nome;
+							coluna++;
+						}
+					}
+				}
+				
+				
+				System.out.printf("	Digite o número da pessoa: ");
+				telefone = sc.next();
+				if(telefone.substring(0).matches("[0-9]*") && telefone.length() == 11){
+					pessoas[linha][coluna] = telefone;
+					coluna++;
+				}else{
+					while(telefone.substring(0).matches("[0-9]*") == false || telefone.length() != 11) {
+						System.out.println("");
+						System.out.printf("	Digite um número válido: (com DDD) ");
+						telefone = sc.next();
+						if(telefone.substring(0).matches("[0-9]*")  && telefone.length() == 11){
+							pessoas[linha][coluna] = telefone;
+							coluna++;
+						}
+					}
+				}
+				
+				System.out.printf("	Digite o email da pessoa: ");
+				email = sc.next();
+				
+				if(email.indexOf('@')!= -1){
+					pessoas[linha][coluna] = email;
+					coluna++;
+				}else{
+					while(email.indexOf('@')== -1) {
+						System.out.println("");
+						System.out.printf("	Digite um E-mail válido: ");
+						email = sc.next();
+						if(telefone.substring(0).matches("[0-9]*")  && telefone.length() == 11){
+							pessoas[linha][coluna] = telefone;
+							coluna++;
+						}
+					}
+				}
+				
+				pessoas[linha][coluna] = email;
+				coluna++;
+
+				linha ++;
+				coluna = 0;
+				
+			break;
+			case 2:
+				System.out.println("----------------------------------------------------------------");
+				System.out.println("		         Modo Listar");
+				System.out.println("");
+				System.out.println("	Nomes		     Telefones		       Emails");
+				System.out.println("");
+				
+				for(int j = 0; j < 100; j++) {
+					for(int i = 0; i < 3; i++){
+						if(pessoas[j][i] != null){
+							System.out.printf("%13s %10s", pessoas[j][i], " ");
+						}else {
+							System.out.println("-------");
+						}
+					}
+					System.out.println("");
+				}
+			break;
+			case 3:
+				System.out.println("----------------------------------------------------------------");
+				System.out.println("Modo Busca");
+				System.out.println("");
+				
+				System.out.print("	Digite o nome da pessoa que deseja buscar: ");
+				nome = sc.next().toUpperCase().trim();
+				System.out.println("	Nome		     Telefone		     Email");
+				System.out.println("");
+				
+				/*
+					for(String vetor[]: pessoas) {
+						for(String item: vetor) {
+							System.out.print(item);
+						}
+					}
+				*/
+				
+				for(int j = 0; j < 100; j++) {
+					if(pessoas[j][0] == null){
+						continue;
+					}else if(pessoas[j][0].equals(nome)) {
+						System.out.printf("%13s %10s", pessoas[j][0], " ");
+						System.out.printf("%13s %10s", pessoas[j][1], " ");
+						System.out.printf("%13s %10s", pessoas[j][2], " ");
+						System.out.println("");
+						break;
+					}
+				}
+				System.out.println("");
+			break;
+			case 4:
+				System.out.println("----------------------------------------------------------------");
+				System.out.println("Opção Sair");
+				System.out.println("");
+				System.out.println("	Obrigado por usar nossos serviços!");
+			break;
+			default:
+				System.out.println("----------------------------------------------------------------");
+				System.out.println("");
+				System.out.println("Número digitado fora do conjunto de opções! Digite um número válido!");
+			break;
+			}
+		} while(escolha != 4);
+	}
+}
